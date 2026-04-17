@@ -380,10 +380,19 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const updateContact = async (data: Partial<Omit<ContactInfo, 'id'>>) => {
-    if (!contact) return;
-    const { error } = await supabase.from('deedox_contact').update(data).eq('id', contact.id);
-    if (!error) setContact({ ...contact, ...data });
-    else console.error('Error updating contact info:', error);
+    const payload = { ...data, id: contact?.id || '00000000-0000-0000-0000-000000000001' };
+    const { data: updatedData, error } = await supabase
+      .from('deedox_contact')
+      .upsert(payload)
+      .select()
+      .single();
+
+    if (!error && updatedData) {
+      setContact(updatedData);
+    } else {
+      console.error('Error updating contact info:', error);
+      throw error;
+    }
   };
 
   const addProject = async (p: Omit<PortfolioProject, 'id'>) => {

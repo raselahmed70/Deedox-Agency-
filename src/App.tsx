@@ -25,6 +25,10 @@ import SiteSettings from './pages/admin/SiteSettings';
 import AiSettings from './pages/admin/AiSettings';
 import Inbox from './pages/admin/Inbox';
 import { useSettings } from './context/SettingsContext';
+import Footer from './components/layout/Footer';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import SupportPage from './pages/SupportPage';
 
 const HomePage = ({ onAboutClick }: { onAboutClick: () => void }) => {
   const { bgOpacity4, bgImage4 } = useSettings();
@@ -56,59 +60,7 @@ const HomePage = ({ onAboutClick }: { onAboutClick: () => void }) => {
       <ContactSection />
 
       {/* 🎯 Footer */}
-      <footer className="relative py-16 border-t border-white/5 overflow-hidden">
-        {/* Immersive Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={bgImage4} 
-            alt="Footer Background" 
-            className="w-full h-full object-cover grayscale transition-opacity duration-700"
-            style={{ opacity: bgOpacity4 / 100 }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-        </div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 relative z-10 px-8">
-          <div className="space-y-6" id="footer-branding">
-            <h3 className="font-serif text-2xl text-white">Deedox Agency</h3>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs font-sans">
-              Building Premium Digital Experiences. We create powerful online experiences that help you grow your business.
-            </p>
-          </div>
-          
-          <div className="space-y-6">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-white/30">Quick Links</h4>
-            <div className="flex flex-col gap-4">
-               <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">Home</a>
-               <a href="#services" className="text-white/60 hover:text-white transition-colors text-sm">Services</a>
-               <a href="#portfolio" className="text-white/60 hover:text-white transition-colors text-sm">Portfolio</a>
-               <a href="#pricing" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</a>
-               <a href="#contact" className="text-white/60 hover:text-white transition-colors text-sm">Contact</a>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-white/30">Contact Us</h4>
-            <div className="flex flex-col gap-4 text-sm text-white/60">
-               <p>your@email.com</p>
-               <p>+880XXXXXXXXX</p>
-               <p>Bangladesh</p>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-white/30">Legal</h4>
-            <div className="flex flex-col gap-4 text-sm text-white/60">
-               <p>Privacy Policy</p>
-               <p>Terms of Service</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 text-center text-white/20 text-xs tracking-wider uppercase font-bold">
-          <p>© 2026 Deedox Agency. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
@@ -156,6 +108,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage onAboutClick={() => setIsAboutOpen(true)} />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/support" element={<SupportPage />} />
         
         {/* 🏢 Professional Admin Routes */}
         <Route path="/deedoxadmin/login" element={<Login />} />

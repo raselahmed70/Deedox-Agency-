@@ -60,7 +60,8 @@ const ContactSection: React.FC = () => {
         if (!lastSubmission) return;
         const subject = `New Inquiry from ${lastSubmission.name}`;
         const body = `Name: ${lastSubmission.name}\nEmail: ${lastSubmission.email}\n\nMessage:\n${lastSubmission.message}`;
-        window.location.href = `mailto:${contactInfo?.email || "hello@deedox.com"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const emailToSend = (!contactInfo?.email || contactInfo?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contactInfo.email;
+        window.location.href = `mailto:${emailToSend}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         setShowChoice(false);
     };
     
@@ -106,8 +107,8 @@ const ContactSection: React.FC = () => {
                             <ContactItem 
                                 icon={<Mail className="h-5 w-5" />}
                                 label="Inquiries"
-                                value={contactInfo?.email || "hello@deedox.com"}
-                                href={`mailto:${contactInfo?.email || "hello@deedox.com"}`}
+                                value={(!contactInfo?.email || contactInfo?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contactInfo.email}
+                                href={`mailto:${(!contactInfo?.email || contactInfo?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contactInfo.email}`}
                             />
                             <ContactItem 
                                 icon={<MessageSquare className="h-5 w-5" />}

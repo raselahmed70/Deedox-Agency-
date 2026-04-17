@@ -145,7 +145,7 @@ export function FloatingChatWidget() {
   const agentAvatar = "/assets/images/story-1.png";
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 font-sans">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-end gap-4 font-sans">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -154,7 +154,7 @@ export function FloatingChatWidget() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-[380px] overflow-hidden rounded-3xl liquid-glass bg-white/[0.01] shadow-2xl transition-all duration-700"
+            className="w-[calc(100vw-2rem)] sm:w-[380px] overflow-hidden rounded-3xl liquid-glass bg-white/[0.01] border border-white/10 shadow-2xl transition-all duration-700"
           >
             {/* Header */}
             <div className="relative border-b border-white/5 p-4 overflow-hidden">
