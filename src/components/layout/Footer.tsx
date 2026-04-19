@@ -41,11 +41,11 @@ const Footer: React.FC = () => {
           <div className="space-y-4 md:space-y-6 overflow-hidden flex flex-col items-center md:items-start text-center md:text-left">
             <h4 className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-white/30 truncate">Contact Us</h4>
             <div className="flex flex-col gap-3 md:gap-4 items-center md:items-start text-[10px] md:text-sm text-white/60">
-               <p className="truncate" title={(!contact?.email || contact?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contact.email}>
+               <p className="hover:text-white transition-colors break-all" title={(!contact?.email || contact?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contact.email}>
                   {(!contact?.email || contact?.email === 'hello@deedox.com') ? "deedoxteam@gmail.com" : contact.email}
                </p>
-               <p className="truncate">{contact?.whatsapp_number || "+880 1817296013"}</p>
-               <p className="truncate line-clamp-1">{contact?.address || "Bangladesh"}</p>
+               <p className="hover:text-white transition-colors">{contact?.whatsapp_number || "+880 1817296013"}</p>
+               <p className="line-clamp-1">{contact?.address || "Bangladesh"}</p>
             </div>
           </div>
 

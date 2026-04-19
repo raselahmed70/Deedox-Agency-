@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import Footer from '../components/layout/Footer';
+import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TermsOfService = () => {
   useEffect(() => {
@@ -10,6 +12,14 @@ const TermsOfService = () => {
     <>
       <div className="relative min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto z-10 flex flex-col justify-center">
         <div className="liquid-glass p-8 md:p-16 rounded-[40px] border border-white/10 bg-white/[0.02] shadow-2xl relative overflow-hidden backdrop-blur-3xl">
+          {/* Close Button */}
+          <Link 
+            to="/" 
+            className="absolute top-6 right-6 md:top-10 md:right-10 p-3 rounded-full bg-white/5 text-white/40 hover:text-white hover:bg-white/10 transition-all z-50 group"
+          >
+            <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+          </Link>
+
           {/* Background element for aesthetic */}
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
           

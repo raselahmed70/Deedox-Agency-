@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSettings } from '../../context/SettingsContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   onAboutClick: () => void;
@@ -34,23 +35,23 @@ const Header: React.FC<HeaderProps> = ({ onAboutClick }) => {
     >
       <nav className="mx-auto flex max-w-7xl flex-row items-center justify-between px-6 md:px-8">
         {/* Brand */}
-        <div className="font-serif text-2xl md:text-3xl tracking-tight text-foreground transition-all duration-300">
+        <Link to="/" className="font-serif text-2xl md:text-3xl tracking-tight text-foreground transition-all duration-300 hover:opacity-80">
           {brandName}<sup className="text-xs">®</sup>
-        </div>
+        </Link>
         
         {/* Desktop Links (Hardcoded for 100% Fidelity) */}
         <div className="hidden items-center gap-6 lg:gap-8 md:flex">
-          <a href="#" className="text-sm transition-colors text-foreground">Home</a>
+          <a href="/" className="text-sm transition-colors text-foreground">Home</a>
           <button 
             onClick={onAboutClick}
             className="text-sm transition-colors text-muted-foreground hover:text-foreground cursor-pointer"
           >
             About
           </button>
-          <a href="#services" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Services</a>
-          <a href="#portfolio" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Portfolio</a>
-          <a href="#pricing" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Pricing</a>
-          <a href="#contact" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Contact</a>
+          <a href="/#services" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Services</a>
+          <a href="/#portfolio" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Portfolio</a>
+          <a href="/#pricing" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Pricing</a>
+          <a href="/#contact" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Contact</a>
         </div>
 
         {/* Desktop CTA & Mobile Toggle */}
@@ -112,17 +113,17 @@ const Header: React.FC<HeaderProps> = ({ onAboutClick }) => {
                     transition={{ type: "spring", damping: 25, stiffness: 300 }}
                     className="relative w-full max-w-sm rounded-[40px] liquid-glass border border-white/10 bg-white/[0.02] p-10 py-16 shadow-2xl z-20 flex flex-col items-center gap-10"
                 >
-                    <div className="font-serif text-3xl tracking-tight text-white mb-4">
+                    <Link to="/" className="font-serif text-3xl tracking-tight text-white mb-4 hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
                         {brandName}<sup className="text-xs">®</sup>
-                    </div>
+                    </Link>
 
                     <div className="flex flex-col items-center gap-6 w-full text-center">
-                        <MobileNavLink name="Home" href="#" active onClick={() => setIsMenuOpen(false)} />
+                        <MobileNavLink name="Home" href="/" active onClick={() => setIsMenuOpen(false)} />
                         <MobileNavLink name="About" onClick={() => { onAboutClick(); setIsMenuOpen(false); }} />
-                        <MobileNavLink name="Services" href="#services" onClick={() => setIsMenuOpen(false)} />
-                        <MobileNavLink name="Portfolio" href="#portfolio" onClick={() => setIsMenuOpen(false)} />
-                        <MobileNavLink name="Pricing" href="#pricing" onClick={() => setIsMenuOpen(false)} />
-                        <MobileNavLink name="Contact" href="#contact" onClick={() => setIsMenuOpen(false)} />
+                        <MobileNavLink name="Services" href="/#services" onClick={() => setIsMenuOpen(false)} />
+                        <MobileNavLink name="Portfolio" href="/#portfolio" onClick={() => setIsMenuOpen(false)} />
+                        <MobileNavLink name="Pricing" href="/#pricing" onClick={() => setIsMenuOpen(false)} />
+                        <MobileNavLink name="Contact" href="/#contact" onClick={() => setIsMenuOpen(false)} />
                     </div>
 
                     <a 
